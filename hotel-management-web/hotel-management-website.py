@@ -4,6 +4,7 @@ cursor = db.cursor()
 sql = "SELECT * FROM GUESTS;"
 cursor.execute(sql)
 results = cursor.fetchall()
-print(results)
+for i in results:
+    print(i)
 
 db.close()
