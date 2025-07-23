@@ -8,14 +8,14 @@ app = Flask(__name__)
 DATABASE = "hotel_management.db"
 
 def get_db():
-    db = getattr(g, "_database", None)
-    if db is None:
-        db = g.database = sqlite3.connect(DATABASE)
+    if "db" not in g:
+        g.db = sqlite3.connect(DATABASE)
+        g.db.row_factory = sqlite3.Row
+    return g.db
 
-    return db
-
-def close_db(exception):
-    db = getattr(g, '_database', None)
+@app.teardown_appcontext
+def close_db(e=None):
+    db = g.pop("db", None)
     if db is not None:
         db.close()
 
@@ -25,8 +25,7 @@ def home():
 
 @app.route("/Guests")
 def guests(): 
-    cursor = get_db.cursor()
-    sql = "SELECT * FROM GUESTS;"
-    cursor.execute(sql)
-    results = cursor.fetchall()
-    return render_template("index.html", results=results)
+    db = get_db()
+    all_guests = db.execute('SELECT * FROM GUESTS').fetchall()
+    return all_guests
+    
