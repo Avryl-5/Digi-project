@@ -1,8 +1,9 @@
-import sqlite3
 
 import re #python -m flask run and ctrl c to quit
 
 from flask import Flask, g, render_template
+
+import sqlite3
 
 app = Flask(__name__)
 DATABASE = "hotel_management.db"
