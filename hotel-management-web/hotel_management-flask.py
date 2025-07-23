@@ -1,4 +1,6 @@
-import re #python -m flask run
+import sqlite3
+
+import re #python -m flask run and ctrl c to quit
 
 from flask import Flask, render_template
 
