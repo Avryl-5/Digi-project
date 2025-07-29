@@ -50,4 +50,13 @@ roomtypeinfo = get_roomtypes.execute('SELECT * FROM ROOM_TYPES').fetchall()
 #SQL_test = "SELECT id, test_name FROM TEST WHERE subject_id = '" + (str(w)) + "';"
 
 
+guest_name = str(input("Name: "))
+
+Get_guest = db.cursor()
+#guestinfo = Get_guest.execute("SELECT * FROM GUESTS WHERE first_name OR sur_name IN '" + (str(guest_name)) + "';").fetchall()
+guestinfo = Get_guest.execute("SELECT * FROM GUESTS WHERE first_name OR sur_name = '" + (str(guest_name)) + "';").fetchall()
+for h in guestinfo:
+    print(h)
+
+
 db.close()
