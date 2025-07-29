@@ -43,9 +43,11 @@ HKPingstatuesinfo = get_HKPingstatuses.execute('SELECT * FROM HOUSEKEEPINGS').fe
 #room types
 get_roomtypes = db.cursor()
 roomtypeinfo = get_roomtypes.execute('SELECT * FROM ROOM_TYPES').fetchall()
-for g in roomtypeinfo:
-    print(g)
+#for g in roomtypeinfo:
+    #print(g)
 
+#CUR_SOR = db.cursor()
+#SQL_test = "SELECT id, test_name FROM TEST WHERE subject_id = '" + (str(w)) + "';"
 
 
 db.close()
