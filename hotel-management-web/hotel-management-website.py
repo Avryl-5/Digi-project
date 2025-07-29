@@ -54,7 +54,8 @@ guest_name = str(input("Name: "))
 
 Get_guest = db.cursor()
 #guestinfo = Get_guest.execute("SELECT * FROM GUESTS WHERE first_name OR sur_name IN '" + (str(guest_name)) + "';").fetchall()
-guestinfo = Get_guest.execute("SELECT * FROM GUESTS WHERE first_name OR sur_name = '" + (str(guest_name)) + "';").fetchall()
+#guestinfo = Get_guest.execute("SELECT * FROM GUESTS WHERE ((first_name = '" + (str(guest_name)) + "') OR (sur_name = '" + (str(guest_name)) + "');").fetchall()
+guestinfo = Get_guest.execute("SELECT * FROM GUESTS WHERE (first_name  = '" + (str(guest_name)) + "') OR (sur_name  = '" + (str(guest_name)) + "');").fetchall()
 for h in guestinfo:
     print(h)
 

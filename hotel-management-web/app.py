@@ -27,6 +27,9 @@ def home():
 @app.route("/Guests")
 def guests(): 
     db = get_db()
-    all_guests = db.execute('SELECT * FROM GUESTS').fetchall()
-    return all_guests
+    Get_all_guests = db.cursor()
+    allguestsinfo = Get_all_guests.execute('SELECT * FROM GUESTS').fetchall()
+    for a in allguestsinfo:
+        return(a)
     
+ 
