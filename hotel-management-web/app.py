@@ -27,6 +27,25 @@ def home():
 @app.route("/Guests")
 def guests(): 
     db = get_db()
-    all_guests = db.execute('SELECT * FROM GUESTS').fetchall()
-    return all_guests
+    Get_all_guests = db.cursor()
+    allguestsinfo = Get_all_guests.execute('SELECT * FROM GUESTS').fetchall()
     
+    return render_template("guestinfos.html", allguestsinfo=allguestsinfo)
+
+@app.route("/Guestsearch")
+def guestsearch(): 
+    return render_template("guestsearch.html")
+
+@app.route("/foundguest", methods = ['POST'])
+def foundguest():
+    userinp = request.form["userinput"] 
+    db = get_db()
+    
+    Get_guest = db.cursor()
+    userinp = userinp.lower()
+    foundmatches = Get_guest.execute("SELECT * FROM GUESTS WHERE ((LOWER(first_name ) LIKE '" + (str(userinp)) + "'|| '%') OR (LOWER(sur_name)  LIKE '" + (str(userinp)) + "'|| '%'));").fetchall()
+    return render_template("guestinfos.html", foundmatches=foundmatches)
+
+
+        
+ 
