@@ -5,26 +5,7 @@ db = sqlite3.connect('hotel_management.db')
 #get everything about everyroom
 Get_all_guests = db.cursor()
 allguestsinfo = Get_all_guests.execute('SELECT * FROM GUESTS').fetchall()
-indiv = []
-#for a in allguestsinfo:
-    #indiv.append(a[0])
-#print(indiv[0])
-g_id = []
-g_fname = []
-g_sname = []
-g_email = []
-for a in allguestsinfo:
-    g_id.append(a[0])
-    g_fname.append(a[1])
-    g_sname.append(a[2])
-    g_email.append(a[3])
-num = 0
-for a1 in allguestsinfo:
-    #print(g_id[num])
-    # print(g_fname[num])
-    #print(g_sname[num])
-    #print(g_email[num])
-    num += 1
+
 
 
 #get everything about everyroom
