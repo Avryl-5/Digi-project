@@ -1,7 +1,7 @@
 
 import re #python -m flask run and ctrl c to quit
 
-from flask import Flask, g, render_template
+from flask import Flask, g, render_template, request
 
 import sqlite3
 
