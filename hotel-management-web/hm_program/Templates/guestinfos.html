@@ -1,8 +1,6 @@
-<!DOCTYPE html>
-<html> 
-    <link rel = "stylesheet" href = "guestinfos.css">
-    <head>
-    <body>
+{% extends "layout.html" %}
+
+{% block body %}
     <h1> Guest list:</h1>
     <table>
         <thead>
@@ -25,28 +23,12 @@
             </tr>
             {% endfor %}
             
-            {% for matches in foundmatches %}
-            <tr>
-                <td>{{ matches[0] }}</td>
-                <td>{{ matches[1] }}</td>
-                <td>{{ matches[2] }}</td>
-                <td>{{ matches[3] }}</td>
-                <td>{{ matches[4] }}</td>
-              
-            </tr>
-            {% endfor %}
         
         <form action = "/foundguest" method = "post">
           <input type="text" name = "userinput">
           <label for="userinput">Search:</label><br>
           <input type="submit" value = "Search">
         </form>
-
+        
     </body>
-
-
-    </head>
-
-
-
-</html>
+{% endblock %}
