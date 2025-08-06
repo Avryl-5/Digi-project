@@ -1,39 +1,3 @@
-<<<<<<< HEAD
-{% extends "layout.html" %}
-
-{% block body %}
-    <h1> Guest list:</h1>
-    <table>
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Surname</th>
-                <th>Email</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for guestinfo in allguestsinfo %}
-            <tr>
-                <td>{{ guestinfo[0] }}</td>
-                <td>{{ guestinfo[1] }}</td>
-                <td>{{ guestinfo[2] }}</td>
-                <td>{{ guestinfo[3] }}</td>
-                <td>{{ guestinfo[4] }}</td>
-              
-            </tr>
-            {% endfor %}
-            
-        
-        <form action = "/foundguest" method = "post">
-          <input type="text" name = "userinput">
-          <label for="userinput">Search:</label><br>
-          <input type="submit" value = "Search">
-        </form>
-        
-    </body>
-{% endblock %}
-=======
 <!DOCTYPE html>
 <html> 
     <link rel = "stylesheet" href = "guestinfos.css">
@@ -86,4 +50,3 @@
 
 
 </html>
->>>>>>> 0f318b2e3e348fd7229e577c551a795c2a75459b
