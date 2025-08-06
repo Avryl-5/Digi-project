@@ -1,7 +1,6 @@
-
 import re #python -m flask run and ctrl c to quit
 
-from flask import Flask, g, render_template
+from flask import Flask, g, render_template, request
 
 import sqlite3
 
@@ -32,21 +31,12 @@ def guests():
     
     return render_template("guestinfos.html", allguestsinfo=allguestsinfo)
 
-@app.route("/Guestsearch")
-def guestsearch(): 
-    return render_template("guestsearch.html")
-
 @app.route("/foundguest", methods = ['POST'])
 def foundguest():
     userinp = request.form["userinput"] 
     db = get_db()
-    
+    userinp = str(userinp.lower())
     Get_guest = db.cursor()
-    userinp = userinp.lower()
+    
     foundmatches = Get_guest.execute("SELECT * FROM GUESTS WHERE ((LOWER(first_name ) LIKE '" + (str(userinp)) + "'|| '%') OR (LOWER(sur_name)  LIKE '" + (str(userinp)) + "'|| '%'));").fetchall()
-    return render_template("guestinfos.html", foundmatches=foundmatches)
-
-
-        
- 
- 
+    return render_template("guestsearch.html", foundmatches=foundmatches)
