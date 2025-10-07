@@ -1,4 +1,30 @@
+{% extends "layout.html" %}
 
-...
-<h>heading</h>
-.
+{% block body %}
+    <body>
+    <h1> Room types:</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>price per night</th>
+                <th>recommended number of people</th>
+
+            </tr>
+        </thead>
+    <tbody>
+    {% for roomtinfos in roomtypeinfo %}
+    <tr>
+        <td>{{ roomtinfos[0] }}</td>
+        <td>{{ roomtinfos[1] }}</td>
+        <td>{{ roomtinfos[2] }}</td>
+        <td>{{ roomtinfos[3] }}</td>
+        <td>{{ roomtinfos[4] }}</td>
+    </tr>
+
+    {% endfor %}
+    </body>
+
+{% endblock %}
