@@ -12,19 +12,22 @@
                 <th>price per night</th>
                 <th>recommended number of people</th>
 
+   
             </tr>
         </thead>
     <tbody>
-    {% for roomtinfos in roomtypeinfo %}
+    {% for roomtinfos in rtroom_list %}
     <tr>
         <td>{{ roomtinfos[0] }}</td>
         <td>{{ roomtinfos[1] }}</td>
         <td>{{ roomtinfos[2] }}</td>
         <td>{{ roomtinfos[3] }}</td>
         <td>{{ roomtinfos[4] }}</td>
+        <td>{{ roomtinfos[5] }}</td>
+        <td>{{ roomtinfos[6] }}</td>
     </tr>
 
     {% endfor %}
-    </body>
 
 {% endblock %}
+
