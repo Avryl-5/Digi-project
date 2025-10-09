@@ -1,0 +1,59 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+
+
+
+a{  color : rgb(33, 33, 39);
+    font-family: 'Open Sans';;
+    font-size: 25.5px;
+    border: solid;
+    line-height: 180px;
+    padding: 50px;
+    margin : 10px;
+    border-width : 10px;
+    border-top-color: rgb(235, 170, 92);
+    border-left-color: rgb(235, 170, 92);
+    border-bottom-color: rgb(129, 202, 229);
+    border-right-color: rgb(129, 202, 229);
+    
+    font-weight: bold;
+    
+}
+a:hover {background-color: rgb(250, 249, 244);}
+
+
+div {display: inline-block ;
+    font-family: 'Open Sans';
+    border-style: solid;
+    border-width: 2.5px;
+    border-color: rgb(0, 0, 0);
+    padding: 20px;
+    margin-top: 75px;
+}
+
+div a {border: none;
+       line-height: normal ;     
+       padding: 5px 0 ;        
+       margin: 0 0 10px 0;        
+       display: inline-block;  
+       
+}
+
+
+tr { line-height: 25px;
+}
+
+th {
+    padding-right: 23px;
+}
+
+table{
+    border-collapse: collapse;
+}
+
+td {border-top : solid;
+    border-bottom : solid;
+    border-width : 1.5px;
+    border-color : rgb(0, 0, 0);
+    padding: 6.5px;
+    
+}

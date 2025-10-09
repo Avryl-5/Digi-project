@@ -1,0 +1,72 @@
+{% extends "layout.html" %}
+
+{% block body %}
+    <body>
+    <h1> Rooms:</h1>
+
+    <h3> Clean Vacant: </h3>
+    <h4> {{VC_rooms}}</h4>
+    <h3> Dirty Vacant: </h3>
+    <h4> {{VD_rooms}}</h4>
+    <h3> Occupied: </h3>
+    <h4> {{OC_rooms}}</h4>
+    <h3> No Show: </h3>
+    <h4> {{NS_rooms}}</h4>
+    <h3> Out of Order: </h3>
+    <h4> {{OOO_rooms}}</h4>
+
+
+    
+    <table>
+        <thead>
+            <tr>
+                <th>Status Code</th>
+                <th>Description</th>
+
+            </tr>
+        </thead>
+        <tbody>
+        {% for status in statuses %}
+        <tr>
+        <td> {{status[0]}} </td>
+        <td> {{status[1]}} </td>
+        {% endfor %}
+        </tr>
+        <br>
+    </table>
+
+    
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Status</th>
+
+            </tr>
+        </thead>
+    <tbody>
+    {% for roominfos in roominfo %}
+    <tr class = "moreinfo"  roomtype="{{ roominfos[2] }}" reservations ="{{ roominfos[3] }}" >
+        <td>{{ roominfos[0] }}</td>
+        <td>{{ roominfos[1] }}</td>
+        
+    </tr>
+
+    {% endfor %}
+    <form action = "/foundrooms" method = "post">
+          <input type="text" name = "userinput2">
+          <label for="userinput2"> Search: </label><br>
+          <input type="submit" value = "Search">
+    </form>
+         
+    {% for matches in foundmatches2 %}
+        <tr class = "moreinfo"  roomtype="{{ matches[2] }}" reservations ="{{ matches[3] }}" >
+            <td>{{ matches[0] }}</td>
+            <td>{{ matches[1] }}</td>
+
+              
+        </tr>
+    {% endfor %}
+    </body>
+
+{% endblock %}

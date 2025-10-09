@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+
+{% block body %}
+    <body>
+    <h1> Guest list:</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Surname</th>
+                <th>Email</th>
+                <th>Reservation ID</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for guestinfo in gr_list %}
+            <tr>
+                <td>{{ guestinfo[0] }}</td>
+                <td>{{ guestinfo[1] }}</td>
+                <td>{{ guestinfo[2] }}</td>
+                <td>{{ guestinfo[3] }}</td>
+                <td><a href="{{ url_for('foundres', res_id=guestinfo[4])}}"> {{guestinfo[4]}} </a> </tr>
+            {% endfor %}
+            
+        
+        <form action = "/foundguest" method = "post">
+          <input type="text" name = "userinput">
+          <label for="userinput">Search:</label><br>
+          <input type="submit" value = "Search">
+        </form>
+         
+        {% for matches in foundmatches %}
+            <tr>
+                <td>{{ matches[0] }}</td>
+                <td>{{ matches[1] }}</td>
+                <td>{{ matches[2] }}</td>
+                <td>{{ matches[3] }}</td>
+                <td>{{ matches[4] }}</td>
+                <td>{{ matches[5] }}</td>
+              
+            </tr>
+        {% endfor %}
+    </body>
+
+{% endblock %}

@@ -1,0 +1,65 @@
+{% extends "layout.html" %}
+{% block body %}
+
+<h1> Reservations:</h1>
+
+<a href="{{ url_for('Reservation', order='arrival_date') }}"> Sort by arrival date </a>
+<a href="{{ url_for('Reservation', order='departure_date') }}"> Sort by departure date </a>
+    <table>
+        <thead>
+            <tr>
+                <th>Reservation ID</th>
+                <th>Arival date</th>
+                <th>Departure date</th>
+                <th>Kids</th>
+                <th>Adults</th>
+                <th>total guests</th>
+
+            </tr>
+        </thead>
+    <tbody>
+    {% for rinfo in rinfolist %}
+    <tr>
+        <td>{{ rinfo[0] }}</td>
+        <td>{{ rinfo[1] }}</td>
+        <td>{{ rinfo[2] }}</td>
+        <td>{{ rinfo[3] }}</td>
+        <td>{{ rinfo[4] }}</td>
+        <td>{{ rinfo[5] }}</td>
+        <td><a href="{{ url_for('Reservation_detail', res_id=rinfo[0], 
+                                                                      Arivald=rinfo[1],
+                                                                      Departd=rinfo[2],
+                                                                      kid_num=rinfo[3],
+                                                                      adult_num=rinfo[4],
+                                                                      totalg=rinfo[5] )}}">more details</a>
+    </tr>
+
+    {% endfor %}
+        
+        <form action = "/foundres" method = "post">
+          <input type="text" name = "userinput3">
+          <label for="userinput3">Search:</label><br>
+          <input type="submit" value = "Search">
+        </form>
+         
+        {% for matches in foundmatches3 %}
+            <tr>
+                <td>{{ matches[0] }}</td>
+                <td>{{ matches[1] }}</td>
+                <td>{{ matches[2] }}</td>
+                <td>{{ matches[3] }}</td>
+                <td>{{ matches[4] }}</td>
+                <td>{{ matches[5] }}</td>
+                 <td><a href="{{ url_for('Reservation_detail', res_id=matches[0], 
+                                                                      Arivald=matches[1],
+                                                                      Departd=matches[2],
+                                                                      kid_num=matches[3],
+                                                                      adult_num=matches[4],
+                                                                      totalg=matches[5] )}}">more details</a>
+              
+            </tr>
+        {% endfor %}
+    </tbody>
+    </table>
+    
+{% endblock %}
