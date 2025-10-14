@@ -7,23 +7,23 @@
     <body>
     <div class="box">    
     <div>
-      <h3> Clean Vacant: </h3>
+      <h3  style="color: rgb(33, 99, 7);"> Clean Vacant: </h3>
       <h4> {{VC_rooms}}</h4>
     </div>
     <div>
-      <h3> Dirty Vacant: </h3>
+      <h3 style ="color: rgb(143, 7, 36);"> Dirty Vacant: </h3>
       <h4> {{VD_rooms}}</h4>
     </div>
     <div>
-      <h3> Occupied: </h3>
+      <h3 style ="color: rgb(143, 7, 36);"> Occupied: </h3>
       <h4> {{OC_rooms}}</h4>
     </div>
     <div>
-      <h3> No Show: </h3>
+      <h3 style ="color: rgb(9, 0, 108);"> No Show: </h3>
       <h4> {{NS_rooms}}</h4>
     </div>
     <div> 
-      <h3> Out of Order: </h3>
+      <h3 style ="color: rgb(79, 0, 100)"> Out of Order: </h3>
       <h4> {{OOO_rooms}}</h4>
     </div>
     </div>
@@ -39,7 +39,7 @@
         <tbody>
         {% for status in statuses %}
         <tr>
-        <td> {{status[0]}} </td>
+        <td class = " color_block {{status[0]}}_color"> {{status[0]}} </td>
         <td> {{status[1]}} </td>
         {% endfor %}
         </tr>
