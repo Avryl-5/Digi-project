@@ -8,15 +8,15 @@
     display: flex;
     border:solid;
     border-collapse: collapse;
+    
 }
 
-.box h3,h4{ font-size: 50%;
 
-}
+
 div{
     color:rgb(29, 40, 50);
     letter-spacing: 1px;
-    font-size: 100%;
+    font-size: 110%;
     text-underline-offset: 5px;
     background-color: rgba(255, 255, 255, 0.801);
     display: inline-block;
