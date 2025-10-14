@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+
+{% block body %}
+    <h1> Room types:</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>price per night</th>
+                <th>recommended number of people</th>
+                <th>Total rooms</th>
+                <th>Available rooms</th>
+
+            </tr>
+        </thead>
+    <tbody>
+    {% for roomtinfos in rtroom_list %}
+    <tr>
+        <td>{{ roomtinfos[0] }}</td>
+        <td>{{ roomtinfos[1] }}</td>
+        <td>{{ roomtinfos[2] }}</td>
+        <td>{{ roomtinfos[3] }}</td>
+        <td>{{ roomtinfos[4] }}</td>
+        <td>{{ roomtinfos[5] }}</td>
+        <td>{{ roomtinfos[6] }}</td>
+    </tr>
+
+    {% endfor %}
+
+{% endblock %}

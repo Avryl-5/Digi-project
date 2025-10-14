@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html> 
+    <head>
+    <link rel="stylesheet" href= "{{url_for('static', filename='layout.css')}}">
+    <meta charset="UTF-8">
+    </head>
+    <body>
+        <div class = "menubar">
+            
+            <a href="http://127.0.0.1:5000/">Menu</a></br>
+            <a href="http://127.0.0.1:5000/Guests">Guests</a></br>
+            <a href="http://127.0.0.1:5000/Roomtypes">Room types</a></br>
+            <a href="http://127.0.0.1:5000/Rooms">Rooms</a></br>
+            <a href="http://127.0.0.1:5000/Housekeeping">Housekeeping</a></br>
+            <a href="http://127.0.0.1:5000/Reservations">Reservations</a>
+
+        </div>
+    {% block body %}
+    {% endblock %}
+    </body>
+
+</html>
