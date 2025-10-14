@@ -1,21 +1,32 @@
 {% extends "layout.html" %}
 
 {% block body %}
-    <body>
+    <link rel="stylesheet" href= "{{url_for('static', filename='spare2.css')}}">
+
     <h1> Rooms:</h1>
-
-    <h3> Clean Vacant: </h3>
-    <h4> {{VC_rooms}}</h4>
-    <h3> Dirty Vacant: </h3>
-    <h4> {{VD_rooms}}</h4>
-    <h3> Occupied: </h3>
-    <h4> {{OC_rooms}}</h4>
-    <h3> No Show: </h3>
-    <h4> {{NS_rooms}}</h4>
-    <h3> Out of Order: </h3>
-    <h4> {{OOO_rooms}}</h4>
-
-
+    <body>
+    <div class="box">    
+    <div>
+      <h3> Clean Vacant: </h3>
+      <h4> {{VC_rooms}}</h4>
+    </div>
+    <div>
+      <h3> Dirty Vacant: </h3>
+      <h4> {{VD_rooms}}</h4>
+    </div>
+    <div>
+      <h3> Occupied: </h3>
+      <h4> {{OC_rooms}}</h4>
+    </div>
+    <div>
+      <h3> No Show: </h3>
+      <h4> {{NS_rooms}}</h4>
+    </div>
+    <div> 
+      <h3> Out of Order: </h3>
+      <h4> {{OOO_rooms}}</h4>
+    </div>
+    </div>
     
     <table>
         <thead>
@@ -33,40 +44,46 @@
         {% endfor %}
         </tr>
         <br>
-    </table>
+    </table></br>
 
-    
-    <table>
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Status</th>
-
-            </tr>
-        </thead>
-    <tbody>
-    {% for roominfos in roominfo %}
-    <tr class = "moreinfo"  roomtype="{{ roominfos[2] }}" reservations ="{{ roominfos[3] }}" >
-        <td>{{ roominfos[0] }}</td>
-        <td>{{ roominfos[1] }}</td>
-        
-    </tr>
-
-    {% endfor %}
-    <form action = "/foundrooms" method = "post">
+      <form action = "/foundrooms" method = "post">
           <input type="text" name = "userinput2">
           <label for="userinput2"> Search: </label><br>
           <input type="submit" value = "Search">
-    </form>
+      </form>
          
-    {% for matches in foundmatches2 %}
-        <tr class = "moreinfo"  roomtype="{{ matches[2] }}" reservations ="{{ matches[3] }}" >
-            <td>{{ matches[0] }}</td>
-            <td>{{ matches[1] }}</td>
 
-              
+    
+   
+
+    {% for roominfos in roominfo %}
+    
+    <tr>
+      
+        <div class="room_block {{ roominfos[1] }}_color moreinfo" roomtype="{{ roominfos[2] }}" reservations ="{{ roominfos[3] }}">
+          <h4>Room:</h4>
+          <h2>{{ roominfos[0] }}</h2>
+          <h4>Status:</h4>
+          <h2>{{ roominfos[1] }}</h2>
+        </div>
+        
+    </tr>
+      {% endfor %}
+      
+      {% for matches in foundmatches2 %}
+          
+        <tr>
+      
+            <div class="room_block {{ matches[1] }}_color moreinfo" roomtype="{{ matches[2] }}" reservations ="{{ matches[3] }}">
+              <h4>Room:</h4>
+              <h2>{{ matches[0] }}</h2>
+              <h4>Status:</h4>
+              <h2>{{ matches[1] }}</h2>
+            </div>
+        
         </tr>
-    {% endfor %}
+      {% endfor %}
+
     </body>
 
 {% endblock %}

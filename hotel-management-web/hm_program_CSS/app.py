@@ -115,9 +115,21 @@ def foundrooms():
     userinp2 = request.form["userinput2"] 
     db = get_db()
     Get_room = db.cursor()
+
+    statuses = Get_room.execute("SELECT * FROM STATUS").fetchall()
+
+    VC_rooms = Get_room.execute("SELECT COUNT(room_num) FROM ROOMS WHERE status_code = 'VC'").fetchall()
+
+    VD_rooms = Get_room.execute("SELECT COUNT(room_num) FROM ROOMS WHERE status_code = 'VD'").fetchall()
+
+    OC_rooms = Get_room.execute("SELECT COUNT(room_num) FROM ROOMS WHERE status_code = 'OC'").fetchall()
+
+    NS_rooms = Get_room.execute("SELECT COUNT(room_num) FROM ROOMS WHERE status_code = 'NS'").fetchall()
+
+    OOO_rooms = Get_room.execute("SELECT COUNT(room_num) FROM ROOMS WHERE status_code = 'OOO'").fetchall()
     
     foundmatches2 = Get_room.execute("SELECT room_num, status_code FROM ROOMS WHERE (room_num LIKE '" + (str(userinp2)) + "'|| '%');").fetchall()
-    return render_template("rooms.html", foundmatches2=foundmatches2)
+    return render_template("rooms.html", foundmatches2=foundmatches2,statuses=statuses, VC_rooms=VC_rooms[0][0], VD_rooms=VD_rooms[0][0], OC_rooms=OC_rooms[0][0], NS_rooms=NS_rooms[0][0], OOO_rooms=OOO_rooms[0][0])
 
 @app.route("/Housekeeping")
 def housekeeping():
