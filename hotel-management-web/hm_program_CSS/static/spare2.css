@@ -24,6 +24,8 @@ div{
     border-right: solid;
     border-width : 1.5px;
     border-color: rgb(158, 158, 158);
+    
+    line-height: 3%;
 }
    
 body{margin-top:10%;}
@@ -77,6 +79,5 @@ h4{font-weight: bolder;
     
 }
 
-h3, h4{ margin: 5px;
-    line-height: 3%;
+h2, h4{ margin: 13%;
 }

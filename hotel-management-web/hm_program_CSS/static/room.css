@@ -10,6 +10,9 @@
     border-collapse: collapse;
 }
 
+.box h3,h4{ font-size: 50%;
+
+}
 div{
     color:rgb(29, 40, 50);
     letter-spacing: 1px;
@@ -24,6 +27,8 @@ div{
     border-right: solid;
     border-width : 1.5px;
     border-color: rgb(158, 158, 158);
+    
+    line-height: 3%;
 }
    
 body{margin-top:10%;}
@@ -48,22 +53,20 @@ body{margin-top:10%;}
 
 .room_block{ display: inline-block;
     border: solid;
-    border-width : 1px;
-    width:18%;
+    border-top-width :45px;
+    width:17%;
     height: 25%;
-    padding: 0.5%;
-    color: white;
-    margin: 5px;
-    border-radius: 10%;
+    color: rgb(0, 0, 0);
+    margin: 15px;
 }
 
-.VC_color{background-color: rgb(33, 99, 7);}
-.OC_color{background-color: rgb(143, 7, 36);}
-.VD_color{background-color: rgb(255, 210, 63);
+.VC_color{border-color: rgb(33, 99, 7);}
+.OC_color{border-color: rgb(143, 7, 36);}
+.VD_color{border-color: rgb(255, 210, 63);
           color: black;
 }
-.OOO_color{background-color: rgb(79, 0, 100);}
-.NS_color{background-color: rgb(9, 0, 108);
+.OOO_color{border-color: rgb(79, 0, 100);}
+.NS_color{border-color: rgb(9, 0, 108);
 }
 
 table{background-color: rgb(255, 255, 255);
@@ -73,4 +76,11 @@ table{background-color: rgb(255, 255, 255);
 }
 th{ border-bottom: solid;
        border-width: 1px;
+}
+
+h4{font-weight: bolder;
+    
+}
+
+h2, h4{ margin: 13%;
 }
