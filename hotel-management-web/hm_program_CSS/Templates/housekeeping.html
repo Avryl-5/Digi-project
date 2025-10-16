@@ -1,0 +1,62 @@
+{% extends "layout.html" %}
+
+{% block body %}
+    <body>
+    <h1> Housekeeping:</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Code</th>
+                <th>Meaning</th>
+
+            </tr>
+        </thead>
+    <tbody>
+    {% for hkinfo in hkcodes %}
+    <tr>
+        <td>{{ hkinfo[0] }}</td>
+        <td>{{ hkinfo[1] }}</td>
+
+    </tr>
+
+    {% endfor %}
+    </table>
+    <h2> Rooms pending housekeeping:</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Room number</th>
+                <th>Housekeeping status</th>
+
+            </tr>
+        </thead>
+    {% for hkroom in hkproomsinfo %}
+    <tr>
+        <td>{{ hkroom[0] }}</td>
+        <td>{{ hkroom[1] }}</td>
+
+    </tr>
+
+    {% endfor %}
+    </table>
+    <h2> Others:</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Room number</th>
+                <th>Housekeeping status</th>
+
+            </tr>
+        </thead>
+    {% for otherhk in otherhkrooms %}
+    <tr>
+        <td>{{ otherhk[0] }}</td>
+        <td>{{ otherhk[1] }}</td>
+
+    </tr>
+
+    {% endfor %}
+    </table>
+    </body>
+
+{% endblock %}
