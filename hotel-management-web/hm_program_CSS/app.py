@@ -65,7 +65,15 @@ def foundguest():
     Get_guest = db.cursor()
     
     foundmatches = Get_guest.execute("SELECT * FROM GUESTS WHERE ((LOWER(first_name ) LIKE '" + (str(userinp)) + "'|| '%') OR (LOWER(sur_name)  LIKE '" + (str(userinp)) + "'|| '%') OR (guest_id  LIKE '" + (str(userinp)) + "'|| '%'));").fetchall()
-    return render_template("guestinfos.html", foundmatches=foundmatches)
+    fgr_list = []
+    
+    for s in foundmatches:
+    
+       fguest_res = Get_guest.execute("SELECT reservation_id FROM GUESTS_RESERVATIONS WHERE guest_id = '" +(str(s[0]))+ "'").fetchall()
+       for t in fguest_res:
+           fgr_list.append(tuple(s) + (t[0],))
+    
+    return render_template("guestinfos.html", fgr_list=fgr_list)
 
 @app.route("/Roomtypes")
 def room_types():
@@ -128,8 +136,18 @@ def foundrooms():
 
     OOO_rooms = Get_room.execute("SELECT COUNT(room_num) FROM ROOMS WHERE status_code = 'OOO'").fetchall()
     
-    foundmatches2 = Get_room.execute("SELECT room_num, status_code FROM ROOMS WHERE (room_num LIKE '" + (str(userinp2)) + "'|| '%');").fetchall()
-    return render_template("rooms.html", foundmatches2=foundmatches2,statuses=statuses, VC_rooms=VC_rooms[0][0], VD_rooms=VD_rooms[0][0], OC_rooms=OC_rooms[0][0], NS_rooms=NS_rooms[0][0], OOO_rooms=OOO_rooms[0][0])
+    foundmatches2 = Get_room.execute("SELECT room_num, status_code, room_type_id FROM ROOMS WHERE (room_num LIKE '" + (str(userinp2)) + "'|| '%');").fetchall()
+    foundroominfo = []
+    for ii in foundmatches2:
+        frmtype = Get_room.execute("SELECT * FROM ROOM_TYPES WHERE room_type_id = '" +(str(ii[2]))+ "'").fetchall()
+
+        frmres = Get_room.execute("SELECT reservation_id FROM ROOMS_RESERVATIONS WHERE room_num = '" +(str(ii[0]))+ "'").fetchall()
+        fr_list = []
+        for r in frmres:
+            fr_list.append(r[0])
+        foundroominfo.append((ii[0],ii[1],frmtype[0][1],fr_list))
+    
+    return render_template("rooms.html", foundroominfo=foundroominfo,statuses=statuses, VC_rooms=VC_rooms[0][0], VD_rooms=VD_rooms[0][0], OC_rooms=OC_rooms[0][0], NS_rooms=NS_rooms[0][0], OOO_rooms=OOO_rooms[0][0])
 
 @app.route("/Housekeeping")
 def housekeeping():

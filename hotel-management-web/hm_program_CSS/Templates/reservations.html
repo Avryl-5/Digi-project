@@ -1,25 +1,37 @@
 {% extends "layout.html" %}
 {% block body %}
-
+<link rel="stylesheet" href= "{{url_for('static', filename='reservation.css')}}">
 <h1> Reservations:</h1>
 
-<a href="{{ url_for('Reservation', order='arrival_date') }}"> Sort by arrival date </a>
-<a href="{{ url_for('Reservation', order='departure_date') }}"> Sort by departure date </a>
-    <table>
+<a class = "button" href="{{ url_for('Reservation', order='reservation_id') }}"> Sort by ID </a>
+<a class = "button" href="{{ url_for('Reservation', order='arrival_date') }}"> Sort by arrival date </a>
+<a class = "button" href="{{ url_for('Reservation', order='departure_date') }}"> Sort by departure date </a></br>
+
+
+      <form action = "/foundres" method = "post">
+        
+          <label for="userinput3"></label><br>
+          <input class ="search_bar" type="text" name = "userinput3" placeholder="Search...">
+          <input class ="search_button" type="submit" value = "Enter">
+      </form>
+
+
+    <table class = " res_table">
         <thead>
-            <tr>
+            <tr class = " res_table">
                 <th>Reservation ID</th>
-                <th>Arival date</th>
+                <th>Arrival date</th>
                 <th>Departure date</th>
                 <th>Kids</th>
                 <th>Adults</th>
-                <th>total guests</th>
+                <th>total guests</th> 
+                <th></th>
 
             </tr>
         </thead>
     <tbody>
     {% for rinfo in rinfolist %}
-    <tr>
+    <tr >
         <td>{{ rinfo[0] }}</td>
         <td>{{ rinfo[1] }}</td>
         <td>{{ rinfo[2] }}</td>
@@ -36,12 +48,7 @@
 
     {% endfor %}
         
-        <form action = "/foundres" method = "post">
-          <input type="text" name = "userinput3">
-          <label for="userinput3">Search:</label><br>
-          <input type="submit" value = "Search">
-        </form>
-         
+    
         {% for matches in foundmatches3 %}
             <tr>
                 <td>{{ matches[0] }}</td>

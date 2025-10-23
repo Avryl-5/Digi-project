@@ -1,83 +1,49 @@
+{% extends "layout.html" %}
 
-.box{margin-left: 0.1%;
-    background: none;
-    width: 90%;
-    height: auto;
-    padding: 0;
-
-    display: flex;
-    border:solid;
-    border-collapse: collapse;
-}
-
-div{
-    color:rgb(29, 40, 50);
-    letter-spacing: 1px;
-    font-size: 100%;
-    text-underline-offset: 5px;
-    background-color: rgba(255, 255, 255, 0.801);
-    display: inline-block;
-    padding: 20px 3px;
-    width: 22.5%;
-    height: 20%;
-    text-align: center;
-    border-right: solid;
-    border-width : 1.5px;
-    border-color: rgb(158, 158, 158);
+{% block body %}
     
-    line-height: 3%;
-}
-   
-body{margin-top:10%;}
+    <link rel="stylesheet" href= "{{url_for('static', filename='reservation.css')}}"> 
+    <body>
+    <h1> Guest list:</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Surname</th>
+                <th>Email</th>
+                <th>Reservation ID</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for guestinfo in gr_list %}
+            <tr>
+                <td>{{ guestinfo[0] }}</td>
+                <td>{{ guestinfo[1] }}</td>
+                <td>{{ guestinfo[2] }}</td>
+                <td>{{ guestinfo[3] }}</td>
+                <td><a href="{{ url_for('foundres', res_id=guestinfo[4])}}"> {{guestinfo[4]}} </a> </tr>
+            {% endfor %}
+            
+        
+        <form action = "/foundguest" method = "post">
+            
+          <label for="userinput"></label>
+          <input style = "width: 30%; margin: 15px 0; border-radius: 10px;" type="text" name = "userinput">
+          <input style = "background-color: rgb(5, 5, 43); color: white; width: 70px; text-align: center;" type="submit" value = "Enter">
+        </form>
+         
+        {% for matches in foundmatches %}
+            <tr>
+                <td>{{ matches[0] }}</td>
+                <td>{{ matches[1] }}</td>
+                <td>{{ matches[2] }}</td>
+                <td>{{ matches[3] }}</td>
+                <td>{{ matches[4] }}</td>
+                <td>{{ matches[5] }}</td>
+              
+            </tr>
+        {% endfor %}
+    </body>
 
-
-.moreinfo:after {
-    content: "room type: " attr(roomtype) " reservation: " attr(reservations);
-    display: none;
-    position: absolute;
-    background-color: rgb(0, 0, 0);
-    border: 2px solid black;
-    padding: 5px;
-    font-size: 14px;
-    color: rgb(255, 255, 255);
-    
-}
-
-.moreinfo:hover:after {
-    display: block;
- 
-}
-
-.room_block{ display: inline-block;
-    border: solid;
-    border-top-width :45px;
-    width:17%;
-    height: 25%;
-    color: rgb(0, 0, 0);
-    margin: 15px;
-}
-
-.VC_color{border-color: rgb(33, 99, 7);}
-.OC_color{border-color: rgb(143, 7, 36);}
-.VD_color{border-color: rgb(255, 210, 63);
-          color: black;
-}
-.OOO_color{border-color: rgb(79, 0, 100);}
-.NS_color{border-color: rgb(9, 0, 108);
-}
-
-table{background-color: rgb(255, 255, 255);
-      width: 50%;
-      padding: 0.7%;
-      font-size: 110%;
-}
-th{ border-bottom: solid;
-       border-width: 1px;
-}
-
-h4{font-weight: bolder;
-    
-}
-
-h2, h4{ margin: 13%;
-}
+{% endblock %}

@@ -1,31 +1,25 @@
 {% extends "layout.html" %}
 
 {% block body %}
-    <h1> Room types:</h1>
-    <table>
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Description</th>
-                <th>price per night</th>
-                <th>recommended number of people</th>
-                <th>Total rooms</th>
-                <th>Available rooms</th>
 
-            </tr>
-        </thead>
-    <tbody>
+<link rel="stylesheet" href= "{{url_for('static', filename='roomtype_guest.css')}}">
+    <h1> Room types:</h1>
     {% for roomtinfos in rtroom_list %}
-    <tr>
-        <td>{{ roomtinfos[0] }}</td>
-        <td>{{ roomtinfos[1] }}</td>
-        <td>{{ roomtinfos[2] }}</td>
-        <td>{{ roomtinfos[3] }}</td>
-        <td>{{ roomtinfos[4] }}</td>
-        <td>{{ roomtinfos[5] }}</td>
-        <td>{{ roomtinfos[6] }}</td>
-    </tr>
+      <div>
+        
+        <span>
+          
+          <h2> {{ roomtinfos[1] }}</h2>
+          <h4>ID : <p> {{ roomtinfos[0] }}</p></h4>
+          <h4>Description : <p>{{ roomtinfos[2] }}</p></h4>
+        </span>
+        <span>
+          <h4>price per night : <p>${{ roomtinfos[3] }}</p></h4>
+          <h4> recommended number of people : <p>{{ roomtinfos[4] }}</p></h4>
+          <h4> Total rooms : <p>{{ roomtinfos[5] }}</p></h4>
+          <h4>Available rooms : <p>{{ roomtinfos[6] }}</p></h4>
+        </span>
+      </div>
 
     {% endfor %}
 

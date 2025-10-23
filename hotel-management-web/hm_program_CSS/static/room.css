@@ -34,12 +34,12 @@ body{margin-top:10%;}
 
 
 .moreinfo:after {
-    content: "room type: " attr(roomtype) " reservation: " attr(reservations);
+    content: "Room Type: " attr(roomtype) ", Reservation: " attr(reservations);
     display: none;
     position: absolute;
     background-color: rgb(0, 0, 0);
     border: 2px solid black;
-    padding: 5px;
+    padding: 0.7%;
     font-size: 14px;
     color: rgb(255, 255, 255);
     
@@ -91,3 +91,4 @@ h4{font-weight: bolder;
 
 h2, h4{ margin: 13%;
 }
+

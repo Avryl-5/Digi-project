@@ -47,9 +47,10 @@
     </table></br>
 
       <form action = "/foundrooms" method = "post">
-          <input type="text" name = "userinput2">
-          <label for="userinput2"> Search: </label><br>
-          <input type="submit" value = "Search">
+        
+          <label for="userinput2"></label><br>
+          <input class ="search_bar" type="text" name = "userinput2" placeholder="Search...">
+          <input class ="search_button" type="submit" value = "Enter">
       </form>
          
 
@@ -70,7 +71,7 @@
     </tr>
       {% endfor %}
       
-      {% for matches in foundmatches2 %}
+      {% for matches in foundroominfo %}
           
         <tr>
       

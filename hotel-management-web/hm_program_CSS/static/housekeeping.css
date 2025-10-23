@@ -1,0 +1,37 @@
+table { background-color: white;
+        border-width: 2px;
+        border-color: rgb(158, 158, 158);
+        width: 100%;
+        line-height: 275%;
+        border-collapse: collapse;}
+
+td { border-top: dashed;
+      border-width: 1.5px;
+      border-color: rgb(158, 158, 158);}
+
+div { display: inline-block;
+      vertical-align: top;
+      border: solid;
+      border-color: rgb(172, 172, 172);
+      width: 47%;
+      border-collapse: collapse;
+      margin: 2% 0.5%;
+      text-align: center;
+      background-color: white;}
+
+h2 {text-decoration: underline;
+    text-underline-offset: 5px;}
+
+.normtable { background-color: white;
+        border: solid;
+        border-width: 2px;
+        border-color: rgb(87, 87, 87);
+        table-layout: fixed;  
+} 
+      
+.normtable td {border: solid;
+  border-width: 1.5px;
+  border-left: none;
+  border-right: none;
+  text-align: center;
+  width: auto;}
