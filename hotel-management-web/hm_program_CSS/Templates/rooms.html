@@ -46,13 +46,18 @@
         <br>
     </table></br>
 
+      <h2 class = "normal"> Search </h2> <h3>- enter room number</h3>
+
       <form action = "/foundrooms" method = "post">
         
-          <label for="userinput2"></label><br>
+          <label for="userinput2"></label>
           <input class ="search_bar" type="text" name = "userinput2" placeholder="Search...">
           <input class ="search_button" type="submit" value = "Enter">
       </form>
-         
+      {% if no_results2 %}
+          <h3>No results found</h3>
+          <p>make sure to check your spelling and what you're searching for exists</p>
+      {% endif %}
 
     
    
