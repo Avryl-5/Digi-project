@@ -5,12 +5,17 @@
     <link rel="stylesheet" href= "{{url_for('static', filename='roomtype_guest.css')}}"> 
     <body>
     <h1> Guest list:</h1>
+        <h2 class="normal"> Search </h2> <h3>- enter either guest name, surname or ID</h3>
         <form action = "/foundguest" method = "post">
             
           <label for="userinput"></label>
           <input class ="search_bar" type="text" name = "userinput" placeholder="Search...">
           <input class ="search_button" type="submit" value = "Enter">
         </form>
+            {% if no_results %}
+                <h3>No results found</h3>
+                <p>make sure to check your spelling and what you're searching for exists</p>
+            {% endif %}
 
             {% for guestinfo in gr_list %}
             <div style = "width: 40%;  margin: 1%;">

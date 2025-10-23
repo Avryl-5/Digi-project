@@ -23,14 +23,12 @@ h2 {text-decoration: underline;
     text-underline-offset: 5px;}
 
 .normtable { background-color: white;
-        border: solid;
         border-width: 2px;
-        border-color: rgb(87, 87, 87);
+        border-color: rgb(69, 69, 69);
         table-layout: fixed;  
-} 
-      
+        border: solid;} 
+
 .normtable td {border: solid;
-  border-width: 1.5px;
   border-left: none;
   border-right: none;
   text-align: center;
