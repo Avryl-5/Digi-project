@@ -59,13 +59,22 @@ def guests():
 
 @app.route("/foundguest", methods = ['POST'])
 def foundguest():
-    userinp = request.form["userinput"] 
+    userinp = request.form["userinput"].strip() 
     db = get_db()
     userinp = str(userinp.lower())
     Get_guest = db.cursor()
     
     foundmatches = Get_guest.execute("SELECT * FROM GUESTS WHERE ((LOWER(first_name ) LIKE '" + (str(userinp)) + "'|| '%') OR (LOWER(sur_name)  LIKE '" + (str(userinp)) + "'|| '%') OR (guest_id  LIKE '" + (str(userinp)) + "'|| '%'));").fetchall()
-    return render_template("guestinfos.html", foundmatches=foundmatches)
+    fgr_list = []
+    
+    for s in foundmatches:
+    
+       fguest_res = Get_guest.execute("SELECT reservation_id FROM GUESTS_RESERVATIONS WHERE guest_id = '" +(str(s[0]))+ "'").fetchall()
+       for t in fguest_res:
+           fgr_list.append(tuple(s) + (t[0],))
+    no_results = len(fgr_list) == 0
+    
+    return render_template("guestinfos.html", fgr_list=fgr_list, no_results=no_results)
 
 @app.route("/Roomtypes")
 def room_types():
@@ -112,7 +121,7 @@ def rooms():
 
 @app.route("/foundrooms", methods = ['POST'])
 def foundrooms():
-    userinp2 = request.form["userinput2"] 
+    userinp2 = request.form["userinput2"].strip()
     db = get_db()
     Get_room = db.cursor()
 
@@ -128,8 +137,19 @@ def foundrooms():
 
     OOO_rooms = Get_room.execute("SELECT COUNT(room_num) FROM ROOMS WHERE status_code = 'OOO'").fetchall()
     
-    foundmatches2 = Get_room.execute("SELECT room_num, status_code FROM ROOMS WHERE (room_num LIKE '" + (str(userinp2)) + "'|| '%');").fetchall()
-    return render_template("rooms.html", foundmatches2=foundmatches2,statuses=statuses, VC_rooms=VC_rooms[0][0], VD_rooms=VD_rooms[0][0], OC_rooms=OC_rooms[0][0], NS_rooms=NS_rooms[0][0], OOO_rooms=OOO_rooms[0][0])
+    foundmatches2 = Get_room.execute("SELECT room_num, status_code, room_type_id FROM ROOMS WHERE (room_num LIKE '" + (str(userinp2)) + "'|| '%');").fetchall()
+    foundroominfo = []
+    for ii in foundmatches2:
+        frmtype = Get_room.execute("SELECT * FROM ROOM_TYPES WHERE room_type_id = '" +(str(ii[2]))+ "'").fetchall()
+
+        frmres = Get_room.execute("SELECT reservation_id FROM ROOMS_RESERVATIONS WHERE room_num = '" +(str(ii[0]))+ "'").fetchall()
+        fr_list = []
+        for r in frmres:
+            fr_list.append(r[0])
+        foundroominfo.append((ii[0],ii[1],frmtype[0][1],fr_list))
+    no_results2 = len(foundroominfo) == 0
+    
+    return render_template("rooms.html", no_results2=no_results2, foundroominfo=foundroominfo,statuses=statuses, VC_rooms=VC_rooms[0][0], VD_rooms=VD_rooms[0][0], OC_rooms=OC_rooms[0][0], NS_rooms=NS_rooms[0][0], OOO_rooms=OOO_rooms[0][0])
 
 @app.route("/Housekeeping")
 def housekeeping():
@@ -161,7 +181,7 @@ def Reservation():
 @app.route("/foundres", methods = ['GET','POST'])
 def foundres():
     if request.method == "POST":
-        userinp3 = request.form["userinput3"] 
+        userinp3 = request.form["userinput3"].strip()
     else:
         userinp3 = request.args.get('res_id')
     foundmatches3 = []
@@ -171,8 +191,8 @@ def foundres():
     for kz in res_info2:
         GRrelationship2 = get_res.execute("SELECT COUNT(guest_id) FROM GUESTS_RESERVATIONS WHERE reservation_id  = '" + (str(kz[0])) + "'").fetchall()
         foundmatches3.append(tuple(kz) + (GRrelationship2[0][0],))
-
-    return render_template("reservations.html", foundmatches3=foundmatches3)
+    no_results3 = len(foundmatches3) == 0
+    return render_template("reservations.html", no_results3=no_results3, foundmatches3=foundmatches3)
 
 
 @app.route("/Reservations_details/<res_id>, methods = ['GET', 'POST'])")

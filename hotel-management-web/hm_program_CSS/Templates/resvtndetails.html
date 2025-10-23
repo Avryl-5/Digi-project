@@ -1,13 +1,13 @@
 {% extends "layout.html" %}
 
 {% block body %}
+<link rel="stylesheet" href= "{{url_for('static', filename='reservation.css')}}">
 
-
-<a href="http://127.0.0.1:5000/Reservations">back</a>
 
 <h1> Reservations:</h1>
 
 
+<a class = "button" href="http://127.0.0.1:5000/Reservations">back</a></br>
     <table>
         <thead>
             <tr>
@@ -29,60 +29,34 @@
         <td>{{ adult_num }}</td>
         <td>{{ totalg }}</td>
         </tr>
-
     </table>
     
-    <table>
-        <thead>
-            <tr>
+    
+    <div>
+        <h2> Room(s):</h2></br>
+        {% for rdetails in roominfo %}
+        <span>
+            <h4>Room ID : <p>{{ rdetails[0] }}</p></h4>
+            <h4>Room type : <p>{{ rdetails[1] }}</p></h4>
+            <h4>Room status : <p>{{ rdetails[2] }}</p></h4>
+            <h4>Housekeeping : <p>{{ rdetails[3] }}</p></h4>
+        </span>
+        {% endfor %}
+   </div>
+    
+    <div>
+        
+        <h2>Guest(s):</h2></br>
+        {% for guests in gname %}
+        <span>
+            <h4> Guest ID : <p>{{ guests[0] }}</p></h4>
+            <h4>Name : <p>{{ guests[1] }}</p></h4>
+            <h4>Surname : <p>{{ guests[2] }}</p></h4>
+            <h4>Contact : <p>{{ guests[3] }}</p></h4>
 
-                <th>Room ID</th>
-                <th>Room type</th>
-                <th>Status</th>
-                <th>Housekeeping</th>
-
-
-            </tr>
-        </thead>
-    <tbody>
-    {% for rdetails in roominfo %}
-    <tr>
-        <td>{{ rdetails[0] }}</td>
-        <td>{{ rdetails[1] }}</td>
-        <td>{{ rdetails[2] }}</td>
-        <td>{{ rdetails[3] }}</td>
-
-    </tr>
-
-    {% endfor %}
-    </table>
-
-
-
-    <table>
-        <thead>
-            <tr>
-
-                <th>Guest ID</th>
-                <th>Name</th>
-                <th>Surname</th>
-                <th>Contact</th>
-
-
-            </tr>
-        </thead>
-    <tbody>
-    {% for guests in gname %}
-    <tr>
-        <td>{{ guests[0] }}</td>
-        <td>{{ guests[1] }}</td>
-        <td>{{ guests[2] }}</td>
-        <td>{{ guests[3] }}</td>
-
-    </tr>
-
-    {% endfor %}
-    </table>
-
+        </span>
+        {% endfor %}
+    
+    </div>
 
 {% endblock %}

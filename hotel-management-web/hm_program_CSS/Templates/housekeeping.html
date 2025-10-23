@@ -1,9 +1,12 @@
 {% extends "layout.html" %}
 
 {% block body %}
+
+<link rel="stylesheet" href= "{{url_for('static', filename='housekeeping.css')}}">
     <body>
+    
     <h1> Housekeeping:</h1>
-    <table>
+    <table class = "normtable">
         <thead>
             <tr>
                 <th>Code</th>
@@ -20,43 +23,48 @@
     </tr>
 
     {% endfor %}
+    
     </table>
-    <h2> Rooms pending housekeeping:</h2>
-    <table>
-        <thead>
-            <tr>
-                <th>Room number</th>
-                <th>Housekeeping status</th>
+    <div>
+      
+      <table>
+        <h2> Rooms pending housekeeping:</h2>
+          <thead>
+              <tr>
+                  <th>Room number</th>
+                  <th>Housekeeping status</th>
 
-            </tr>
-        </thead>
-    {% for hkroom in hkproomsinfo %}
-    <tr>
-        <td>{{ hkroom[0] }}</td>
-        <td>{{ hkroom[1] }}</td>
+              </tr>
+          </thead>
+      {% for hkroom in hkproomsinfo %}
+      <tr>
+          <td>{{ hkroom[0] }}</td>
+          <td>{{ hkroom[1] }}</td>
+      </tr>
 
-    </tr>
+      {% endfor %}
+      </table>
+    </div>
 
-    {% endfor %}
-    </table>
-    <h2> Others:</h2>
-    <table>
-        <thead>
-            <tr>
-                <th>Room number</th>
-                <th>Housekeeping status</th>
+    <div>
+      <table>
+      <h2> Others:</h2>
+          <thead>
+              <tr>
+                  <th>Room number</th>
+                  <th>Housekeeping status</th>
+  
+              </tr>
+          </thead>
+      {% for otherhk in otherhkrooms %}
+      <tr>
+          <td>{{ otherhk[0] }}</td>
+          <td>{{ otherhk[1] }}</td>
+      </tr>
 
-            </tr>
-        </thead>
-    {% for otherhk in otherhkrooms %}
-    <tr>
-        <td>{{ otherhk[0] }}</td>
-        <td>{{ otherhk[1] }}</td>
-
-    </tr>
-
-    {% endfor %}
-    </table>
-    </body>
+      {% endfor %}
+      </table>
+      </body>
+    </div>
 
 {% endblock %}
