@@ -1,0 +1,95 @@
+{% extends "layout.html" %}
+
+{% block body %}
+    <link rel="stylesheet" href= "{{url_for('static', filename='room.css')}}">
+
+    <h1> Rooms:</h1>
+    <body>
+    <div class="box">    
+    <div>
+      <h3  style="color: rgb(33, 99, 7);"> Clean Vacant: </h3>
+      <h4> {{VC_rooms}}</h4>
+    </div>
+    <div style ="padding: 5px;">
+      <h3 style ="color: rgb(255, 210, 63); background-color : black; padding: 15px;"> Dirty Vacant: </h3>
+      <h4> {{VD_rooms}}</h4>
+    </div>
+    <div>
+      <h3 style ="color: rgb(143, 7, 36);"> Occupied: </h3>
+      <h4> {{OC_rooms}}</h4>
+    </div>
+    <div>
+      <h3 style ="color: rgb(9, 0, 108);"> No Show: </h3>
+      <h4> {{NS_rooms}}</h4>
+    </div>
+    <div> 
+      <h3 style ="color: rgb(79, 0, 100)"> Out of Order: </h3>
+      <h4> {{OOO_rooms}}</h4>
+    </div>
+    </div>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>Status Code</th>
+                <th>Description</th>
+
+            </tr>
+        </thead>
+        <tbody>
+        {% for status in statuses %}
+        <tr>
+        <td class = " color_block {{status[0]}}_color"> {{status[0]}} </td>
+        <td> {{status[1]}} </td>
+        {% endfor %}
+        </tr>
+        <br>
+    </table></br>
+
+      <h2 class = "normal"> Search </h2> <h3>- enter room number</h3>
+
+      <form action = "/foundrooms" method = "post">
+        
+          <label for="userinput2"></label>
+          <input class ="search_bar" type="text" name = "userinput2" placeholder="Search...">
+          <input class ="search_button" type="submit" value = "Enter">
+      </form>
+      {% if no_results2 %}
+          <h3>No results found</h3>
+          <p>make sure to check your spelling and what you're searching for exists</p>
+      {% endif %}
+
+    
+   
+
+    {% for roominfos in roominfo %}
+    
+    <tr>
+      
+        <div class="room_block {{ roominfos[1] }}_color moreinfo" roomtype="{{ roominfos[2] }}" reservations ="{{ roominfos[3] }}">
+          <h4>Room:</h4>
+          <h2>{{ roominfos[0] }}</h2>
+          <h4>Status:</h4>
+          <h2>{{ roominfos[1] }}</h2>
+        </div>
+        
+    </tr>
+      {% endfor %}
+      
+      {% for matches in foundroominfo %}
+          
+        <tr>
+      
+            <div class="room_block {{ matches[1] }}_color moreinfo" roomtype="{{ matches[2] }}" reservations ="{{ matches[3] }}">
+              <h4>Room:</h4>
+              <h2>{{ matches[0] }}</h2>
+              <h4>Status:</h4>
+              <h2>{{ matches[1] }}</h2>
+            </div>
+        
+        </tr>
+      {% endfor %}
+
+    </body>
+
+{% endblock %}
