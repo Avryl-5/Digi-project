@@ -1,0 +1,29 @@
+div {display: inline-block;
+    border: solid;
+    border-width: 1.5px;
+    border-color: rgb(0, 0, 0); 
+    background-color: white;
+    box-shadow: 2px 1px 7px rgb(172, 172, 172);
+    width: 95%;
+    padding: 1% 2%; 
+    margin-bottom: 2%;
+}
+
+span{display: inline-block;
+     vertical-align: top;
+     font-size: 100%;
+     width : 40%;
+     height: auto;
+     padding: 1%;
+     padding-left: 5%;
+     
+}
+
+p { display : inline; 
+    font-weight: normal;
+}
+
+a:hover {font-weight: bolder;
+         color: white;
+         background-color: rgb(54, 54, 54);
+}
