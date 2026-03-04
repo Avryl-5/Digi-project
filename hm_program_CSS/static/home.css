@@ -1,0 +1,93 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+
+
+
+
+a{  
+    color:rgb(29, 40, 50);
+    letter-spacing: 1px;
+    font-size: 22px;
+    text-underline-offset: 5px;
+    background-color: rgba(255, 255, 255, 0.801);
+    display: inline-block;
+    margin: 1px 5px;
+    padding: 40px 30px;
+    width: 20%;
+    height: 20%;
+    text-align: center;
+    border: solid;
+    border-width : 1.5px;
+    border-color: rgb(198, 198, 198);
+    border-collapse: collapse;
+    
+    
+}
+
+a:hover {font-weight: bolder;
+        background-color: rgb(240, 240, 240);    
+        text-decoration-thickness: 4px;
+}  
+    
+    
+
+
+h3 {font-size: 20px;
+    padding : 20px;
+    margin:0;
+    font-family: 'Open Sans';
+    color : rgb(34, 42, 75);
+}    
+
+div {display: inline-block ;
+    font-family: 'Open Sans';
+    background-color: rgb(255, 255, 255);
+    padding: 0;
+    margin: 30px 5px 10px 20px;
+    width: 47.5%;
+    font-size: 15px;
+    border-collapse: collapse;
+    
+}
+
+
+div a {border: none;
+       border-bottom: solid;
+       border-top: solid;
+       border-width : 1px;
+       border-color: rgb(192, 192, 192);
+       text-align: left;
+       width: 100%;
+       height: auto;
+       line-height: normal ;     
+       padding: 15px 0px;        
+       display: block;  
+       background-color: rgb(242, 240, 240);
+       color:rgb(19, 21, 38); 
+       margin: 0 ;
+       text-indent: 20px;
+       text-decoration: none;
+}
+
+div a:hover {
+    text-decoration: underline;
+    font-weight: bolder;
+    text-decoration-thickness: 4px;
+    text-underline-offset: 5px;
+}
+
+tr { line-height: 55px;}
+th {padding-right: 5%;
+    
+    
+}
+
+table{border-collapse: collapse;
+      margin:10px;
+      width: 97%;
+}
+
+td {border : solid;
+    border-width : 1.5px;
+    border-color : rgb(0, 0, 0);
+    padding: 6.5px 10px;  }
+

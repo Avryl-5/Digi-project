@@ -1,0 +1,49 @@
+{% extends "layout.html" %}
+
+{% block body %}
+    
+    <link rel="stylesheet" href= "{{url_for('static', filename='reservation.css')}}"> 
+    <body>
+    <h1> Guest list:</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Surname</th>
+                <th>Email</th>
+                <th>Reservation ID</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for guestinfo in gr_list %}
+            <tr>
+                <td>{{ guestinfo[0] }}</td>
+                <td>{{ guestinfo[1] }}</td>
+                <td>{{ guestinfo[2] }}</td>
+                <td>{{ guestinfo[3] }}</td>
+                <td><a href="{{ url_for('foundres', res_id=guestinfo[4])}}"> {{guestinfo[4]}} </a> </tr>
+            {% endfor %}
+            
+        
+        <form action = "/foundguest" method = "post">
+            
+          <label for="userinput"></label>
+          <input style = "width: 30%; margin: 15px 0; border-radius: 10px;" type="text" name = "userinput">
+          <input style = "background-color: rgb(5, 5, 43); color: white; width: 70px; text-align: center;" type="submit" value = "Enter">
+        </form>
+         
+        {% for matches in foundmatches %}
+            <tr>
+                <td>{{ matches[0] }}</td>
+                <td>{{ matches[1] }}</td>
+                <td>{{ matches[2] }}</td>
+                <td>{{ matches[3] }}</td>
+                <td>{{ matches[4] }}</td>
+                <td>{{ matches[5] }}</td>
+              
+            </tr>
+        {% endfor %}
+    </body>
+
+{% endblock %}
