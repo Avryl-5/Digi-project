@@ -9,7 +9,7 @@ DATABASE = "hotel_management.db"
 
 def get_db():
     if "db" not in g:
-        g.db = sqlite3.connect(DATABASE)
+        g.db = sqlite3.connect("/home/daia12345/Digi-project/hm_program_CSS/database.db")
         g.db.row_factory = sqlite3.Row
     return g.db
 
@@ -222,4 +222,5 @@ def Reservation_detail(res_id):
 
     return render_template("resvtndetails.html", roominfo=roominfo, gname=gname,
     res_id=res_id, Arivald=Arivald, Departd=Departd, kid_num=kid_num, adult_num=adult_num, totalg=totalg)
+
 
